@@ -211,13 +211,13 @@ DB: collect and tune that DB activity
 ABAP CPU: check the ABAP for tuning potential
 RFC: check with /SDF/(S)MON if the RFCs are active mainly on the database or in ABAP CPU and tune accordingly.
 
-[Blocking locks in history]()
+- [Blocking locks in history]()
 
-[Locks Analyzer]()
+- [Locks Analyzer]()
 
-[Blocked Statements]()
+- [Blocked Statements]()
 
-[Lock Analyzer]()
+- [Lock Analyzer]()
 
 **SQL Statement Issues**
 
@@ -227,11 +227,12 @@ Is the effort to select the rows plausible or too high?
 Where is the time lost in the access path (table or index)?
 Does Oracle provide the chance to do it better (index creation)?
 
-[SQL ID data collector (statement tuning)]()
+- [SQL ID data collector (statement tuning)]()
 
-[SQL ID cache statements]()
+- [SQL ID cache statements]()
 
-- Long running background job issues
+**Long running background job issues**
+
 A very often upcoming performance problem is that a Background Job shows a high runtime so it should be evaluated why. For systematic tuning, it is crucial to know where most of the time is lost, otherwise a component be tuned having just minor contribution to the overall runtime. Collect the following components:
 
 - Job Time:
