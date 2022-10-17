@@ -247,7 +247,7 @@ STAD -> DB Time
 
 ##### DB Server Time:
 
-Get the timeframe for the job and the DB sessions that served the job by doing the following:
+Get the time-frame for the job and the DB sessions that served the job by doing the following:
 
 - SM37 to display the job details: application server, WP number, WP pid, start time
 
@@ -287,6 +287,20 @@ Using the above information, run the following:
     
        count(*) desc; 
 `
+
+Depending on where the most time is being spent, further analysis and tuning is needed, but only in areas having the dominant or at least significant contribution. Consider the following areas:
+
+##### Non-DB Time (measured from SAP) is dominating the job time
+
+Check for what time was spent on the SAP layer and if this activity can be tuned. As an example, use /SDF/(S)MON for this analysis. If /SDF/(S)MON data is not available, set up /SDF/SMON according to [3007524](https://launchpad.support.sap.com/#/notes/3007524).
+
+##### Communication/Network time between SAP is domination the job time
+
+This can be due to either long running executions or a high volume of executions. In the former case, use tools such as ABAP Meter and niping as described in [3007524](https://launchpad.support.sap.com/#/notes/3007524). In the latter case, use the scripts for SQL statement issues.
+
+##### SQL Statement time dominates the job time
+
+Use the scripts for SQL statement issues
 
 ## Contributors
 
