@@ -169,39 +169,39 @@ For non-database VMs, [Azure Backup for VM](/azure/backup/backup-azure-vms-intro
 
 **General Issues**
 
-- [History of configuration patches]()
+- [History of configuration patches](./scripts/3_Configuration_Patches_History.txt)
 
-- [DB time history]()
+- [DB time history](./scripts/4_DB%20Time%20History.txt)
 
-- [DB time overview]()
+- [DB time overview](./scripts/5_DB%20Time%20Overview.txt)
 
-- [CPU time history]()
+- [CPU time history](./scripts/6_CPU%20Time%20History.txt)
 
-- [DB key figures history]()
+- [DB key figures history](./scripts/7_DB%20Key%20Figures%20History.txt)
 
-- [Top segments per segment statistics]()
+- [Top segments per segment statistics](./scripts/8_TopSegmentsPerSegmentStatistics.txt)
 
-- [SQL Statements that consumed the most DB server time]()
+- [SQL Statements that consumed the most DB server time](./scripts/9_SQL_TopSQLInAWRWithSearchOptionsAndHistograms.txt)
 
-- [Configuration Overview (Long Running)]()
+- [Configuration Overview (Long Running)](./scripts/10_Configuration_Overview_12%2B_Imp.txt)
 
 **IO Issues**
 
 There are two reasons for more absolute IO time per hour: more IO operations or a higher average time per IO operations. It is crucial to figure out which is responsible for an absolute IO operation time increase. In the event of higher IO operations, it is imperative to focus on the statements responsible for the higher number of IOs. In the latter case, the root cause is likely outside of the database, if the database does not show higher IO activity than at times that do not have issues. Use the DB time history to try and narrow this down.
 
-- [IO activity per AWR interval]()
+- [IO activity per AWR interval](./scripts/11_IO_IOActivityPerAWRInterval.txt)
 
-- [Histogram db file sequential read]()
+- [Histogram db file sequential read](./scripts/12_Histogram%20db%20file%20sequential%20read.txt)
 
-- [Histogram db file scattered read]()
+- [Histogram db file scattered read](./scripts/13_Histogram%20db%20file%20scattered%20read.txt)
 
-- [Histogram log file sync]()
+- [Histogram log file sync](./scripts/14_Histogram%20log%20file%20sync.txt)
 
-- [Histogram log file parallel write]()
+- [Histogram log file parallel write](./scripts/15_Histogram%20log%20file%20parallel%20write.txt)
 
-- [Histogram disk file operations I/O]()
+- [Histogram disk file operations I/O](./scripts/16_Histogram%20Disk%20file%20operations%20IO.txt)
 
-- [LFS Analyzer]()
+- [LFS Analyzer](./scripts/17_LFS%20Analyzer.txt)
 
 **Enqueue Issues**
 
@@ -211,13 +211,13 @@ DB: collect and tune that DB activity
 ABAP CPU: check the ABAP for tuning potential
 RFC: check with /SDF/(S)MON if the RFCs are active mainly on the database or in ABAP CPU and tune accordingly.
 
-- [Blocking locks in history]()
+- [Blocking locks in history](./scripts/18_Locks_BlockingLocksInHistory_11g%2B.txt)
 
-- [Locks Analyzer]()
+- [Locks Analyzer](./scripts/19_Lock%20Analyzer%20%E2%80%93%20Root%20Blocker%20Activity.txt)
 
-- [Blocked Statements]()
+- [Blocked Statements](./scripts/20_Lock%20Analyzer%20%E2%80%93%20Blocked%20Statements.txt)
 
-- [Lock Analyzer]()
+- [Lock Analyzer](./scripts/21_Lock%20Analyzer%20%E2%80%93%20Blocked%20Rows.txt)
 
 **SQL Statement Issues**
 
@@ -227,9 +227,9 @@ Is the effort to select the rows plausible or too high?
 Where is the time lost in the access path (table or index)?
 Does Oracle provide the chance to do it better (index creation)?
 
-- [SQL ID data collector (statement tuning)]()
+- [SQL ID data collector (statement tuning)](./scripts/22_SQL_SQL_ID_DataCollector_11g%2B.txt)
 
-- [SQL ID cache statements]()
+- [SQL ID cache statements](./scripts/23_SQL_ID%20-%20Cache%20Snapshots.txt)
 
 **Long running background job issues**
 
