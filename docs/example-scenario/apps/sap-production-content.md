@@ -240,12 +240,12 @@ SM37 or ST03 -> Transaction Profile -> Background -> Total Response Time **or**
 SDF/(S)MON samples of background job * time between samples **or**
 STAD -> Response Time
 
-DB Time:
+- DB Time:
 ST03 –> Transaction profile -> Background -> Total DB Time **or**
 /SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
 STAD -> DB Time
 
-DB Server Time:
+- DB Server Time:
 ST03 –> Transaction profile -> Background -> Total DB Time **or**
 /SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
 STAD -> DB Time
