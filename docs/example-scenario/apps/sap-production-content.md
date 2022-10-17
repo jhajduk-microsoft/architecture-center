@@ -257,7 +257,32 @@ Get the timeframe for the job and the DB sessions that served the job by doing t
 
 - This approach only works if the SAP server was not restarted since the job run. If there was only one restart, the "dev_w*.old" trace file can be evaluated exactly in the say wa via transaction AL11
 
+Using the above information, run the following:
+`select nvl(sql_id,decode(grouping_id(sql_id),1,'DB Server Time','No Statement')) statement, count(*)*10 seconds 
 
+from
+
+  DBA_HIST_ACTIVE_SESS_HISTORY  
+
+where
+
+  session_id=<session_id> and
+
+  sample_time between
+
+    to_timestamp('<Job Start Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') and 
+
+    to_timestamp('<Job End Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') 
+
+ group by rollup
+
+   (sql_id)
+
+ order by
+
+   grouping_id(sql_id) desc,
+
+   count(*) desc; `
 
 ## Contributors
 
