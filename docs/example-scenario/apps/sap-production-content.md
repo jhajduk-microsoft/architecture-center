@@ -248,13 +248,13 @@ STAD -> DB Time
 - DB Server Time:
 Get the timeframe for the job and the DB sessions that served the job by doing the following:
 
--- SM37 to display the job details: application server, WP number, WP pid, start time
+##### SM37 to display the job details: application server, WP number, WP pid, start time
 
--- Go to SM50 on the application server and open the trace file of the WP that served the job, search for the WP pid
+##### Go to SM50 on the application server and open the trace file of the WP that served the job, search for the WP pid
 
--- If there are multiple restarts of this WP with the same pid, go to the latest before the job started and search down manually beginning with the line that starts with "C now SAP". You will see the session at the end (session= or session_id=)
+##### If there are multiple restarts of this WP with the same pid, go to the latest before the job started and search down manually beginning with the line that starts with "C now SAP". You will see the session at the end (session= or session_id=)
 
--- This approach only works if the SAP server was not restarted since the job run. If there was only one restart, the "dev_w*.old" trace file can be evaluated exactly in the say wa via transaction AL11
+##### This approach only works if the SAP server was not restarted since the job run. If there was only one restart, the "dev_w*.old" trace file can be evaluated exactly in the say wa via transaction AL11
 
 
 
