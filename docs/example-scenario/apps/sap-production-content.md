@@ -260,6 +260,7 @@ Get the timeframe for the job and the DB sessions that served the job by doing t
 Using the above information, run the following:
 
 `
+
     select nvl(sql_id,decode(grouping_id(sql_id),1,'DB Server Time','No Statement')) statement, count(*)*10 seconds
 
     from
