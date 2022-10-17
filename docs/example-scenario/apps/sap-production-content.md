@@ -245,7 +245,7 @@ ST03 –> Transaction profile -> Background -> Total DB Time **or**
 /SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
 STAD -> DB Time
 
-DB Server Time:
+##### DB Server Time:
 
 Get the timeframe for the job and the DB sessions that served the job by doing the following:
 
