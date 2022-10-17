@@ -261,7 +261,7 @@ Using the above information, run the following:
 
 `
     select nvl(sql_id,decode(grouping_id(sql_id),1,'DB Server Time','No Statement')) statement, count(*)*10 seconds
-    
+
     from
     
       DBA_HIST_ACTIVE_SESS_HISTORY  
