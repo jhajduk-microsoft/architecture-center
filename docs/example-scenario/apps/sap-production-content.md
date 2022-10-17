@@ -259,31 +259,33 @@ Get the timeframe for the job and the DB sessions that served the job by doing t
 
 Using the above information, run the following:
 
-`select nvl(sql_id,decode(grouping_id(sql_id),1,'DB Server Time','No Statement')) statement, count(*)*10 seconds
-
-from
-
-  DBA_HIST_ACTIVE_SESS_HISTORY  
-
-where
-
-  session_id=<session_id> and
-
-  sample_time between
-
-    to_timestamp('<Job Start Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') and 
-
-    to_timestamp('<Job End Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') 
-
- group by rollup
-
-   (sql_id)
-
- order by
-
-   grouping_id(sql_id) desc,
-
-   count(*) desc; `
+`
+    select nvl(sql_id,decode(grouping_id(sql_id),1,'DB Server Time','No Statement')) statement, count(*)*10 seconds
+    
+    from
+    
+      DBA_HIST_ACTIVE_SESS_HISTORY  
+    
+    where
+    
+      session_id=<session_id> and
+    
+      sample_time between
+    
+        to_timestamp('<Job Start Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') and 
+    
+        to_timestamp('<Job End Time YYYY-MM-DD HH24:MI:SS>','YYYY-MM-DD HH24:MI:SS') 
+    
+     group by rollup
+    
+       (sql_id)
+    
+     order by
+    
+       grouping_id(sql_id) desc,
+    
+       count(*) desc; 
+    `
 
 ## Contributors
 
