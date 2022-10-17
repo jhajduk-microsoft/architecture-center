@@ -285,7 +285,7 @@ Using the above information, run the following:
        grouping_id(sql_id) desc,
     
        count(*) desc; 
-    `
+`
 
 ## Contributors
 
