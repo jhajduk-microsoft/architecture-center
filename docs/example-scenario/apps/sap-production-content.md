@@ -167,7 +167,7 @@ Running SAP on Oracle can present its own challenges when addressing performance
 
 For non-database VMs, [Azure Backup for VM](/azure/backup/backup-azure-vms-introduction) is recommended to protect SAP application VMs and surround infrastructure like SAP Web Dispatcher.
 
-- **General Issues**
+**General Issues**
 
 - [History of configuration patches]()
 
