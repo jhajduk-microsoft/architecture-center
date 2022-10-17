@@ -161,28 +161,31 @@ Backup for Oracle in Azure can be achieved through several means:
 - **Azure Storage** Leveraging file based database backups, for example scheduled with SAP's BR tools, to be stored and versioned as files/directories on Azure Blob NFS, Azure Blob or Azure Files storage services. See [documented details](/azure/virtual-machines/workloads/oracle/oracle-database-backup-strategies) how to achieve both Oracle data and log backups.
 - **3rd party backup solutions** See architecture of your backup storage provider, supporting Oracle in Azure.
 
+### Performance Efficiency
+
 Running SAP on Oracle can present its own challenges when addressing performance issues. What follows are some ready made scripts that can help when troubleshooting SAP on Oracle deployments. These scripts are made to be run by Cloud Architects, DBAs, escalation teams, or anyone that is responsible for troubleshooting SAP on Oracle performance issues. There are separate categories for the scripts.
 
 For non-database VMs, [Azure Backup for VM](/azure/backup/backup-azure-vms-introduction) is recommended to protect SAP application VMs and surround infrastructure like SAP Web Dispatcher.
-- General Issues
 
-[History of configuration patches]()
+- **General Issues**
 
-[DB time history]()
+- [History of configuration patches]()
 
-[DB time overview]()
+- [DB time history]()
 
-[CPU time history]()
+- [DB time overview]()
 
-[DB key figures history]()
+- [CPU time history]()
 
-[Top segments per segment statistics]()
+- [DB key figures history]()
 
-[SQL Statements that consumed the most DB server time]()
+- [Top segments per segment statistics]()
 
-[Configuration Overview (Long Running)]()
+- [SQL Statements that consumed the most DB server time]()
 
-- IO Issues
+- [Configuration Overview (Long Running)]()
+
+- **IO Issues**
 There are two reasons for more absolute IO time per hour: more IO operations or a higher average time per IO operations. It is crucial to figure out which is responsible for an absolute IO operation time increase. In the event of higher IO operations, it is imperative to focus on the statements responsible for the higher number of IOs. In the latter case, the root cause is likely outside of the database, if the database does not show higher IO activity than at times that do not have issues. Use the DB time history to try and narrow this down.
 
 [IO activity per AWR interval]()
@@ -242,6 +245,8 @@ DB Server Time:
 ST03 –> Transaction profile -> Background -> Total DB Time **or**
 /SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
 STAD -> DB Time
+
+
 
 ## Contributors
 
