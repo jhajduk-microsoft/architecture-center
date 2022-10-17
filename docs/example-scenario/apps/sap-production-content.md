@@ -161,7 +161,87 @@ Backup for Oracle in Azure can be achieved through several means:
 - **Azure Storage** Leveraging file based database backups, for example scheduled with SAP's BR tools, to be stored and versioned as files/directories on Azure Blob NFS, Azure Blob or Azure Files storage services. See [documented details](/azure/virtual-machines/workloads/oracle/oracle-database-backup-strategies) how to achieve both Oracle data and log backups.
 - **3rd party backup solutions** See architecture of your backup storage provider, supporting Oracle in Azure.
 
+Running SAP on Oracle can present its own challenges when addressing performance issues. What follows are some ready made scripts that can help when troubleshooting SAP on Oracle deployments. These scripts are made to be run by Cloud Architects, DBAs, escalation teams, or anyone that is responsible for troubleshooting SAP on Oracle performance issues. There are separate categories for the scripts.
+
 For non-database VMs, [Azure Backup for VM](/azure/backup/backup-azure-vms-introduction) is recommended to protect SAP application VMs and surround infrastructure like SAP Web Dispatcher.
+- General Issues
+
+[History of configuration patches]()
+
+[DB time history]()
+
+[DB time overview]()
+
+[CPU time history]()
+
+[DB key figures history]()
+
+[Top segments per segment statistics]()
+
+[SQL Statements that consumed the most DB server time]()
+
+[Configuration Overview (Long Running)]()
+
+- IO Issues
+There are two reasons for more absolute IO time per hour: more IO operations or a higher average time per IO operations. It is crucial to figure out which is responsible for an absolute IO operation time increase. In the event of higher IO operations, it is imperative to focus on the statements responsible for the higher number of IOs. In the latter case, the root cause is likely outside of the database, if the database does not show higher IO activity than at times that do not have issues. Use the DB time history to try and narrow this down.
+
+[IO activity per AWR interval]()
+
+[Histogram db file sequential read]()
+
+[Histogram db file scattered read]()
+
+[Histogram log file sync]()
+
+[Histogram log file parallel write]()
+
+[Histogram disk file operations I/O]()
+
+[LFS Analyzer]()
+
+- Enqueue Issues
+Use these statements if the absolute enqueue time is significantly higher than usual at the time of the performance issue. To reduce enqueue time, either the risk of contention needs to be reduces, by non-DB tuning or the root blocker activity of the block waiters needs to be tuned. In the former situation, buffering number ranges (table NRIV), or using less parallelism could help to resolve the issue. In the latter case, it depends on where the root blocker is mainly active:
+
+DB: collect and tune that DB activity
+ABAP CPU: check the ABAP for tuning potential
+RFC: check with /SDF/(S)MON if the RFCs are active mainly on the database or in ABAP CPU and tune accordingly.
+
+[Blocking locks in history]()
+
+[Locks Analyzer]()
+
+[Blocked Statements]()
+
+[Lock Analyzer]()
+
+- SQL Statement Issues
+If a can technically be tuned and to what degree it can be tuned depends on a lot of factors. Some guiding questions include:
+
+Is the effort to select the rows plausible or too high?
+Where is the time lost in the access path (table or index)?
+Does Oracle provide the chance to do it better (index creation)?
+
+[SQL ID data collector (statement tuning)]()
+
+[SQL ID cache statements]()
+
+- Long running background job issues
+A very often upcoming performance problem is that a Background Job shows a high runtime so it should be evaluated why. For systematic tuning, it is crucial to know where most of the time is lost, otherwise a component be tuned having just minor contribution to the overall runtime. Collect the following components:
+
+- Job Time:
+SM37 or ST03 -> Transaction Profile -> Background -> Total Response Time **or**
+SDF/(S)MON samples of background job * time between samples **or**
+STAD -> Response Time
+
+DB Time:
+ST03 –> Transaction profile -> Background -> Total DB Time **or**
+/SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
+STAD -> DB Time
+
+DB Server Time:
+ST03 –> Transaction profile -> Background -> Total DB Time **or**
+/SDF/(S)MON samples of job showing DB activity (columns Current Action, Table) * time between samples **or**
+STAD -> DB Time
 
 ## Contributors
 
